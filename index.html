@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Hub</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f8;
+      color: #1C2B3A;
+    }
+
+    /* ──────────────── HEADER ──────────────── */
+    header {
+      background-color: #00BFA5;
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '✳';
+      font-size: 220px;
+      color: rgba(255,255,255,0.15);
+      position: absolute;
+      right: -20px;
+      top: -40px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .header-text {
+      z-index: 1;
+    }
+
+    .header-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .header-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
+      margin-top: 10px;
+      font-weight: 400;
+    }
+
+    /* ──────────────── SEARCH BAR ──────────────── */
+    .search-wrapper {
+      background-color: #1B5E3B;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search-wrapper input {
+      flex: 1;
+      max-width: 500px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+    }
+
+    .search-wrapper input::placeholder {
+      color: #999;
+    }
+
+    .search-label {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ──────────────── MAIN LAYOUT ──────────────── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 30px;
+    }
+
+    /* ──────────────── SECTION TITLE ──────────────── */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #00BFA5;
+      margin-bottom: 16px;
+      margin-top: 40px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #00BFA5;
+    }
+
+    /* ──────────────── CARDS GRID ──────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* ──────────────── CARD ──────────────── */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      text-decoration: none;
+      color: #1C2B3A;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 2px solid transparent;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      cursor: pointer;
+    }
+
+    .card:hover {
+      border-color: #00BFA5;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,191,165,0.2);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      width: 50px;
+      height: 50px;
+      background: #e8faf7;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1B5E3B;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: auto;
+    }
+
+    .tag-dashboard { background: #d1faf4; color: #00796B; }
+    .tag-sheet     { background: #d4edda; color: #1B5E3B; }
+    .tag-report    { background: #fff3cd; color: #856404; }
+    .tag-tool      { background: #e0e7ff; color: #3730a3; }
+    .tag-doc       { background: #fce8e8; color: #b91c1c; }
+
+    /* ──────────────── QUICK LINKS BAR ──────────────── */
+    .quick-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .quick-link {
+      background: #1C2B3A;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-link:hover {
+      background: #00BFA5;
+    }
+
+    /* ──────────────── FOOTER ──────────────── */
+    footer {
+      background-color: #1C2B3A;
+      text-align: center;
+      padding: 24px;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    footer span {
+      color: #00BFA5;
+      font-weight: 600;
+    }
+
+    /* ──────────────── RESPONSIVE ──────────────── */
+    @media (max-width: 600px) {
+      header { padding: 30px 24px; }
+      header h1 { font-size: 28px; }
+      .search-wrapper { padding: 16px 24px; }
+      main { padding: 24px 16px; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────────────── HEADER ──────────────── -->
+<header>
+  <div class="header-text">
+    <div class="header-label">Team Hub</div>
+    <h1>Il tuo spazio di lavoro</h1>
+    <p class="header-sub">Tutti gli strumenti del team, in un unico posto.</p>
+  </div>
+</header>
+
+<!-- ──────────────── SEARCH ──────────────── -->
+<div class="search-wrapper">
+  <span class="search-label">🔍</span>
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Cerca uno strumento o una risorsa..."
+    oninput="filterCards()"
+  />
+</div>
+
+<!-- ──────────────── MAIN ──────────────── -->
+<main>
+
+  <!-- QUICK LINKS -->
+  <div class="section-title">⚡ Accesso Rapido</div>
+  <div class="quick-links">
+    <a href="#dashboards" class="quick-link">📊 Dashboard</a>
+    <a href="#sheets" class="quick-link">📋 Google Sheet</a>
+    <a href="#reports" class="quick-link">📈 Report</a>
+    <a href="#tools" class="quick-link">🛠 Tool</a>
+    <a href="#docs" class="quick-link">📄 Documenti</a>
+  </div>
+
+  <!-- SEZIONE DASHBOARD -->
+  <div class="section-title" id="dashboards">📊 Dashboard</div>
+  <div class="cards-grid" id="cardsContainer">
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Dashboard Principale">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Dashboard Principale</div>
+      <div class="card-desc">Overview generale delle performance del team.</div>
+      <span class="card-tag tag-dashboard">Dashboard</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Dashboard KPI">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Dashboard KPI</div>
+      <div class="card-desc">Monitoraggio degli obiettivi e indicatori chiave.</div>
+      <span class="card-tag tag-dashboard">Dashboard</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Analytics Chiamate">
+      <div class="card-icon">📞</div>
+      <div class="card-title">Analytics Chiamate</div>
+      <div class="card-desc">Statistiche e qualità delle chiamate del team.</div>
+      <span class="card-tag tag-dashboard">Dashboard</span>
+    </a>
+
+  </div>
+
+  <!-- SEZIONE GOOGLE SHEET -->
+  <div class="section-title" id="sheets">📋 Google Sheet</div>
+  <div class="cards-grid">
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Foglio Presenze">
+      <div class="card-icon">🗓</div>
+      <div class="card-title">Foglio Presenze</div>
+      <div class="card-desc">Gestione presenze e turni del team.</div>
+      <span class="card-tag tag-sheet">Google Sheet</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Tracker Obiettivi">
+      <div class="card-icon">✅</div>
+      <div class="card-title">Tracker Obiettivi</div>
+      <div class="card-desc">Aggiornamento settimanale dei target individuali.</div>
+      <span class="card-tag tag-sheet">Google Sheet</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Registro Feedback">
+      <div class="card-icon">💬</div>
+      <div class="card-title">Registro Feedback</div>
+      <div class="card-desc">Raccolta feedback clienti e note operative.</div>
+      <span class="card-tag tag-sheet">Google Sheet</span>
+    </a>
+
+  </div>
+
+  <!-- SEZIONE REPORT -->
+  <div class="section-title" id="reports">📈 Report</div>
+  <div class="cards-grid">
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Report Mensile">
+      <div class="card-icon">📈</div>
+      <div class="card-title">Report Mensile</div>
+      <div class="card-desc">Sintesi delle attività e risultati mensili.</div>
+      <span class="card-tag tag-report">Report</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Report Qualità">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Report Qualità</div>
+      <div class="card-desc">Valutazione qualitativa delle interazioni.</div>
+      <span class="card-tag tag-report">Report</span>
+    </a>
+
+  </div>
+
+  <!-- SEZIONE TOOL -->
+  <div class="section-title" id="tools">🛠 Tool & Strumenti</div>
+  <div class="cards-grid">
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="CRM">
+      <div class="card-icon">🏢</div>
+      <div class="card-title">CRM</div>
+      <div class="card-desc">Gestione clienti e storico interazioni.</div>
+      <span class="card-tag tag-tool">Tool</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Calendario Team">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Calendario Team</div>
+      <div class="card-desc">Pianificazione riunioni, meeting e scadenze.</div>
+      <span class="card-tag tag-tool">Tool</span>
+    </a>
+
+  </div>
+
+  <!-- SEZIONE DOCUMENTI -->
+  <div class="section-title" id="docs">📄 Documenti & Formazione</div>
+  <div class="cards-grid">
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Masterclass Comunicazione">
+      <div class="card-icon">🎓</div>
+      <div class="card-title">Masterclass Comunicazione</div>
+      <div class="card-desc">La Scienza della Chiamata – materiale formativo.</div>
+      <span class="card-tag tag-doc">Formazione</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Procedure Operative">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Procedure Operative</div>
+      <div class="card-desc">Linee guida e SOP aggiornate del team.</div>
+      <span class="card-tag tag-doc">Documento</span>
+    </a>
+
+    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Script Chiamate">
+      <div class="card-icon">🗣</div>
+      <div class="card-title">Script Chiamate</div>
+      <div class="card-desc">Template e frasi guida per le conversazioni.</div>
+      <span class="card-tag tag-doc">Documento</span>
+    </a>
+
+  </div>
+
+</main>
+
+<!-- ──────────────── FOOTER ──────────────── -->
+<footer>
+  Team Hub · Aggiornato da <span>Team Leader</span> · 2024
+</footer>
+
+<!-- ──────────────── SEARCH SCRIPT ──────────────── -->
+<script>
+  function filterCards() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+      card.style.display = (name.includes(query) || desc.includes(query)) ? 'flex' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
