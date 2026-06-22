@@ -1,5 +1,138 @@
 <!DOCTYPE html>
 <html lang="it">
+  <style>
+  /* ──────────────── CARTELLA CON SOTTO-LINK ──────────────── */
+
+  .link-folder {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+
+  .link-folder:hover {
+    border-color: #00BFA5;
+    box-shadow: 0 8px 24px rgba(0,191,165,0.2);
+  }
+
+  .link-folder summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    user-select: none;
+  }
+
+  .link-folder summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .folder-icon {
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+    background: #e8faf7;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .folder-info {
+    flex: 1;
+  }
+
+  .folder-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1B5E3B;
+  }
+
+  .folder-desc {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .folder-arrow {
+    color: #00BFA5;
+    font-size: 18px;
+    font-weight: 800;
+    transition: transform 0.25s ease;
+  }
+
+  .link-folder[open] .folder-arrow {
+    transform: rotate(180deg);
+  }
+
+  .folder-links {
+    background: #f9fffe;
+    border-top: 1px solid #e0f7f4;
+    padding: 6px 0;
+  }
+
+  .folder-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    text-decoration: none;
+    color: #1C2B3A;
+    border-bottom: 1px solid #e0f7f4;
+    transition: background 0.2s ease;
+  }
+
+  .folder-link:last-child {
+    border-bottom: none;
+  }
+
+  .folder-link:hover {
+    background: #e0f7f4;
+  }
+
+  .folder-link-icon {
+    font-size: 18px;
+    width: 34px;
+    height: 34px;
+    background: #ffffff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+  }
+
+  .folder-link-info {
+    flex: 1;
+  }
+
+  .folder-link-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1B5E3B;
+  }
+
+  .folder-link-desc {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+  }
+
+  .folder-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #d1faf4;
+    color: #00796B;
+  }
+</style>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -273,29 +406,107 @@
   </div>
 
   <!-- SEZIONE DASHBOARD -->
-  <div class="section-title" id="dashboards">📊 Dashboard</div>
-  <div class="cards-grid" id="cardsContainer">
+  <!-- SEZIONE DASHBOARD -->
+<div class="section-title" id="dashboards">📊 Dashboard</div>
 
-    <a href="https://datastudio.google.com/u/0/reporting/37e30461-61f8-4f3a-9116-4a2507efdc78/page/lXAxD?pli=1" target="_blank" class="card" data-name="Dashboard Scorecard Online">
-      <div class="card-icon">📊</div>
-      <div class="card-title">Dashboard Scorecard Online</div>
-      <div class="card-desc">Overview generale delle performance del team.</div>
-      <span class="card-tag tag-dashboard">Dashboard</span>
-    </a>
+<div class="cards-grid" id="dashboardContainer">
 
-    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Dashboard KPI">
-      <div class="card-icon">🎯</div>
-      <div class="card-title">Dashboard Onboarders</div>
-      <div class="card-desc">Monitoraggio degli obiettivi e indicatori chiave.</div>
-      <span class="card-tag tag-dashboard">Dashboard</span>
-    </a>
+  <!-- CARTELLA DASHBOARD FARMING -->
+  <details class="link-folder" data-name="Dashboard Farming">
+    <summary>
+      <div class="folder-icon">🌾</div>
 
-    <a href="INSERISCI_URL" target="_blank" class="card" data-name="Analytics Chiamate">
-      <div class="card-icon">📞</div>
-      <div class="card-title">Analytics Chiamate</div>
-      <div class="card-desc">Statistiche e qualità delle chiamate del team.</div>
-      <span class="card-tag tag-dashboard">Dashboard</span>
-    </a>
+      <div class="folder-info">
+        <div class="folder-title">Dashboard Farming</div>
+        <div class="folder-desc">
+          Link utili per monitorare attività, performance e KPI del team Farming.
+        </div>
+      </div>
+
+      <div class="folder-arrow">⌄</div>
+    </summary>
+
+    <div class="folder-links">
+
+      <a href="INCOLLA_URL_QUI" target="_blank" rel="noopener" class="folder-link" data-name="Scorecard Farming">
+        <div class="folder-link-icon">📊</div>
+        <div class="folder-link-info">
+          <div class="folder-link-title">Scorecard Farming</div>
+          <div class="folder-link-desc">Dashboard principale performance Farming.</div>
+        </div>
+        <span class="folder-badge">Dashboard</span>
+      </a>
+
+      <a href="INCOLLA_URL_QUI" target="_blank" rel="noopener" class="folder-link" data-name="KPI Farming">
+        <div class="folder-link-icon">🎯</div>
+        <div class="folder-link-info">
+          <div class="folder-link-title">KPI Farming</div>
+          <div class="folder-link-desc">Monitoraggio degli indicatori chiave del team Farming.</div>
+        </div>
+        <span class="folder-badge">KPI</span>
+      </a>
+
+      <a href="INCOLLA_URL_QUI" target="_blank" rel="noopener" class="folder-link" data-name="Report Farming">
+        <div class="folder-link-icon">📈</div>
+        <div class="folder-link-info">
+          <div class="folder-link-title">Report Farming</div>
+          <div class="folder-link-desc">Report e analisi periodiche relative al Farming.</div>
+        </div>
+        <span class="folder-badge">Report</span>
+      </a>
+
+    </div>
+  </details>
+
+
+  <!-- CARTELLA DASHBOARD ONBOARDING -->
+  <details class="link-folder" data-name="Dashboard Onboarding Dashboard Onboarders">
+    <summary>
+      <div class="folder-icon">🚀</div>
+
+      <div class="folder-info">
+        <div class="folder-title">Dashboard Onboarding</div>
+        <div class="folder-desc">
+          Link utili per monitorare onboarding, onboarders, avanzamento e risultati.
+        </div>
+      </div>
+
+      <div class="folder-arrow">⌄</div>
+    </summary>
+
+    <div class="folder-links">
+
+      <a href="INCOLLA_URL_QUI" target="_blank" rel="noopener" class="folder-link" data-name="Dashboard Onboarders">
+        <div class="folder-link-icon">👥</div>
+        <div class="folder-link-info">
+          <div class="folder-link-title">Dashboard Onboarders</div>
+          <div class="folder-link-desc">Monitoraggio delle attività degli onboarders.</div>
+        </div>
+        <span class="folder-badge">Dashboard</span>
+      </a>
+
+      <a href="INCOLLA_URL_QUI" target="_blank" rel="noopener" class="folder-link" data-name="KPI Onboarding">
+        <div class="folder-link-icon">🎯</div>
+        <div class="folder-link-info">
+          <div class="folder-link-title">KPI Onboarding</div>
+          <div class="folder-link-desc">Obiettivi e indicatori chiave del processo di onboarding.</div>
+        </div>
+        <span class="folder-badge">KPI</span>
+      </a>
+
+      <a href="INCOLLA_URL_QUI" target="_blank" rel="noopener" class="folder-link" data-name="Avanzamento Onboarding">
+        <div class="folder-link-icon">✅</div>
+        <div class="folder-link-info">
+          <div class="folder-link-title">Avanzamento Onboarding</div>
+          <div class="folder-link-desc">Stato avanzamento e completamento degli onboarding.</div>
+        </div>
+        <span class="folder-badge">Tracking</span>
+      </a>
+
+    </div>
+  </details>
+
+</div>
 
   </div>
 
